@@ -41,7 +41,7 @@ class Musixmatch extends RESTfulService
      */
     public function searchLyricsRelatedToSong(Song $song)
     {
-        if($song->hasLyrics() == false)
+        if($song->hasLyrics() === false)
         {
             if (!$song->artist->isUnknown() && !$song->artist->isVarious()) {
                 $lyrics = $this->search($song->title, $song->artist->name);
@@ -79,8 +79,6 @@ class Musixmatch extends RESTfulService
             return $this->getLyrics($response);
         }catch(\Exception $e){
             Log::error($e);
-
-            return false;
         }
     }
     
